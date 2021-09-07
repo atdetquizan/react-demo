@@ -1,17 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from './app/App';
+
+// class Example extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state  = {
+//       count: 0
+//     }
+//   }
+
+//   render() {
+//     console.log(this.props);
+//     // Declara una nueva variable de estado, la cual llamaremos “count”
+
+//     return (
+//       <div>
+//         <p>You clicked {this.state.count} times</p>
+//         {this.state.count > 10 ? <h1>Es mayor a 10</h1> : 'Es menor a 10'}
+//         <button onClick={() => this.setState({ count: this.state.count + 1 })}>Click me</button>
+//       </div>
+//     );
+//   }
+// }
+
+// class Button extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+
+//   render() {
+//     return <button type='button'>{this.props.index}</button>;
+//   }
+// }
+
+// const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <Example title='example' description="description example"></Example>,
+  // (buttons.map((index) => index % 2 === 0 && <Button index={index}></Button>)),
+  <App></App>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
