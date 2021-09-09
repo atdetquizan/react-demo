@@ -2,5 +2,5 @@
     padding: 10px;
     min-height: calc(100vh - 96px);
     background-color: white;
-    opacity: .5;
+    /* opacity: .5; */
 }

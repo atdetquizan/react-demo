@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Producto.css';
 export default class Producto extends React.Component {
   constructor({ props }) {
     super(props);
