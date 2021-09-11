@@ -1,8 +1,31 @@
 import React from 'react';
-import './Header.css'
+import { Nav } from 'react-bootstrap';
+import './Header.css';
 
 export default class Header extends React.Component {
-    render() {
-        return <nav className="wrapper-header">header component</nav>
-    }
+  render() {
+    return (
+      <nav className='wrapper-header'>
+        <Nav
+          activeKey='/home'
+          onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+        >
+          <Nav.Item>
+            <Nav.Link href='/home'>Active</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey='link-1'>Link</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey='link-2'>Link</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey='disabled' disabled>
+              Disabled
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </nav>
+    );
+  }
 }
