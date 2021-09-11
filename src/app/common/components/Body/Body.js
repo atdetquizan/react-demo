@@ -1,8 +1,9 @@
 import React from 'react';
-import Edad from '../Edad/Edad';
-import ListadoProductos from '../ListadoProductos/ListadoProductos';
-import FormAuth from '../FormAuth/FormAuth';
 import { Container, Row, Col } from 'react-bootstrap';
+// import Edad from '../Edad/Edad';
+// import ListadoProductos from '../ListadoProductos/ListadoProductos';
+// import FormAuth from '../FormAuth/FormAuth';
+import ReactiveForm from '../ReactiveForm/ReactiveForm';
 
 import './Body.css';
 
@@ -20,17 +21,18 @@ export default class Body extends React.Component {
         <Container>
           <Row className='justify-content-center'>
             <Col md='6'>
-              <FormAuth />
+              {/* <FormAuth /> */}
+              <ReactiveForm />
             </Col>
           </Row>
         </Container>
 
-        <input
+        {/* <input
           type='text'
           onChange={(e) => this.setState({ años: +e.target.value })}
         />
         <Edad años={this.state.años}></Edad>
-        <ListadoProductos />
+        <ListadoProductos /> */}
       </nav>
     );
   }

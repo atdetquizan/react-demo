@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 export default class FormAuth extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', checkbox: false };
+    this.state = { email: 'asdasdas', password: 'asdsadas', checkbox: false };
 
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,6 +20,7 @@ export default class FormAuth extends React.Component {
           <Form.Control
             type='email'
             placeholder='Enter email'
+            value={this.state.email}
             onChange={this.handleChangeEmail}
           />
           <Form.Text className='text-muted'>
@@ -32,6 +33,7 @@ export default class FormAuth extends React.Component {
           <Form.Control
             type='password'
             placeholder='Password'
+            value={this.state.password}
             onChange={this.handleChangePassword}
           />
         </Form.Group>
@@ -39,6 +41,7 @@ export default class FormAuth extends React.Component {
           <Form.Check
             type='checkbox'
             label='Check me out'
+            checked={this.state.checkbox}
             onChange={this.handleChangeCheckbox}
           />
         </Form.Group>
@@ -56,7 +59,7 @@ export default class FormAuth extends React.Component {
   handleChangePassword(event) {
     this.setState({ password: event.target.value });
   }
-  
+
   handleChangeCheckbox(event) {
     this.setState({ checkbox: event.target.checked });
   }
