@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+// import { Container, Row, Col } from 'react-bootstrap';
 // import Edad from '../Edad/Edad';
 // import ListadoProductos from '../ListadoProductos/ListadoProductos';
-import FormAuth from '../FormAuth/FormAuth';
-import ReactiveForm from '../ReactiveForm/ReactiveForm';
+// import FormAuth from '../FormAuth/FormAuth';
+// import ReactiveForm from '../ReactiveForm/ReactiveForm';
 // import {
 //   FirebaseAppProvider
 // } from 'reactfire';
@@ -22,16 +22,17 @@ export default class Body extends React.Component {
   }
   render() {
     return (
-      <nav className='wrapper-body'>
+    <div className="container-fluit">
+      <nav className='container wrapper-body'>
         {this.props.children}
-        <Container>
+        {/* <Container>
           <Row className='justify-content-center'>
             <Col md='6'>
               <FormAuth />
               <ReactiveForm />
             </Col>
           </Row>
-        </Container>
+        </Container> */}
 
         {/* <input
           type='text'
@@ -40,6 +41,7 @@ export default class Body extends React.Component {
         <Edad años={this.state.años}></Edad>
         <ListadoProductos /> */}
       </nav>
+      </div>
     );
   }
 }

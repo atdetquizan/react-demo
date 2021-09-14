@@ -3,6 +3,7 @@ import React from 'react';
 import Productos from './Home/Productos/Productos';
 import CarritoCompra from './Home/CarritoCompra/CarritoCompra';
 import ComfirmacionCompra from './Home/ConfirmacionCompra/ConfirmacionCompra';
+import ProductoDetalle from './Home/ProductoDetalle/ProductoDetalle';
 import Header from './Common/components/Header/Header';
 import Body from './Common/components/Body/Body';
 import Footer from './Common/components/Footer/Footer';
@@ -28,6 +29,9 @@ export default class App extends React.Component {
                 </Route>
                 <Route path='/confirmacion-compra'>
                   <ComfirmacionCompra />
+                </Route>
+                <Route path={`/producto-detalle/:productoId`}>
+                  <ProductoDetalle />
                 </Route>
               </Switch>
             </Body>

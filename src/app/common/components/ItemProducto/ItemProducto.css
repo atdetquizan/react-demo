@@ -8,7 +8,10 @@
     margin-right: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    
+    overflow: hidden;
+    
 }
 
 .content-proudcto__title {
@@ -19,4 +22,8 @@
 
 .content-proudcto__image img {
     width: 100%;
+}
+
+.content-proudcto__footer {
+    padding: 0px 20px;
 }
