@@ -1,8 +1,13 @@
 import React from 'react';
 
-import Header from './common/components/Header/Header';
-import Body from './common/components/Body/Body';
-import Footer from './common/components/Footer/Footer';
+import Productos from './Home/Productos/Productos';
+import CarritoCompra from './Home/CarritoCompra/CarritoCompra';
+import ComfirmacionCompra from './Home/ConfirmacionCompra/ConfirmacionCompra';
+import Header from './Common/components/Header/Header';
+import Body from './Common/components/Body/Body';
+import Footer from './Common/components/Footer/Footer';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -10,9 +15,25 @@ export default class App extends React.Component {
   render() {
     return (
       <div className='container-app'>
-        <Header></Header>
-        <Body></Body>
-        <Footer></Footer>
+        <Router>
+          <div>
+            <Header />
+            <Body>
+              <Switch>
+                <Route exact path='/'>
+                  <Productos />
+                </Route>
+                <Route path='/carrito-compra'>
+                  <CarritoCompra />
+                </Route>
+                <Route path='/confirmacion-compra'>
+                  <ComfirmacionCompra />
+                </Route>
+              </Switch>
+            </Body>
+            <Footer></Footer>
+          </div>
+        </Router>
       </div>
     );
   }

@@ -43,6 +43,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 ReactDOM.render(
   // <Example title='example' description="description example"></Example>,
   // (buttons.map((index) => index % 2 === 0 && <Button index={index}></Button>)),
-  <App></App>,
+  <App />,
   document.getElementById('root')
 );

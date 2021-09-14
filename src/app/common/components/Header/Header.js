@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import './Header.css';
 
 export default class Header extends React.Component {
@@ -11,21 +12,17 @@ export default class Header extends React.Component {
           onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         >
           <Nav.Item>
-            <Nav.Link href='/home'>Active</Nav.Link>
+            <Link to='/' class="nav-link">Productos</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey='link-1'>Link</Nav.Link>
+            <Link to='/carrito-compra' class="nav-link">Carrito Compra</Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey='link-2'>Link</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey='disabled' disabled>
-              Disabled
-            </Nav.Link>
+            <Link to='/confirmacion-compra' class="nav-link">Confirmacion de compra</Link>
           </Nav.Item>
         </Nav>
       </nav>
     );
   }
 }
+

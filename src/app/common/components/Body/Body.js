@@ -2,8 +2,13 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Edad from '../Edad/Edad';
 // import ListadoProductos from '../ListadoProductos/ListadoProductos';
-// import FormAuth from '../FormAuth/FormAuth';
+import FormAuth from '../FormAuth/FormAuth';
 import ReactiveForm from '../ReactiveForm/ReactiveForm';
+// import {
+//   FirebaseAppProvider
+// } from 'reactfire';
+// import firebaseConfig from '../../../Core/firebaseConfig';
+// import List from '../List/List';
 
 import './Body.css';
 
@@ -21,7 +26,7 @@ export default class Body extends React.Component {
         <Container>
           <Row className='justify-content-center'>
             <Col md='6'>
-              {/* <FormAuth /> */}
+              <FormAuth />
               <ReactiveForm />
             </Col>
           </Row>
