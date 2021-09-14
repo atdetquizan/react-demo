@@ -12,13 +12,13 @@ export default class Header extends React.Component {
           onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         >
           <Nav.Item>
-            <Link to='/' class="nav-link">Productos</Link>
+            <Link to='/' className="nav-link">Productos</Link>
           </Nav.Item>
           <Nav.Item>
-            <Link to='/carrito-compra' class="nav-link">Carrito Compra</Link>
+            <Link to='/carrito-compra' className="nav-link">Carrito Compra</Link>
           </Nav.Item>
           <Nav.Item>
-            <Link to='/confirmacion-compra' class="nav-link">Confirmacion de compra</Link>
+            <Link to='/confirmacion-compra' className="nav-link">Confirmacion de compra</Link>
           </Nav.Item>
         </Nav>
       </nav>

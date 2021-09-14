@@ -13,8 +13,8 @@ import ReactiveForm from '../ReactiveForm/ReactiveForm';
 import './Body.css';
 
 export default class Body extends React.Component {
-  constructor() {
-    super();
+  constructor({ props }) {
+    super(props);
     this.state = {
       nombres: 'Anthony',
       años: 0,
@@ -23,6 +23,7 @@ export default class Body extends React.Component {
   render() {
     return (
       <nav className='wrapper-body'>
+        {this.props.children}
         <Container>
           <Row className='justify-content-center'>
             <Col md='6'>
