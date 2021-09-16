@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     id: 1,
     title: 'Producto 01',
@@ -44,3 +44,5 @@ export default [
     descuento: 0,
   },
 ];
+
+export default data;

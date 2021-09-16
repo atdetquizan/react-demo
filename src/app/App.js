@@ -10,6 +10,7 @@ import Footer from './Common/components/Footer/Footer';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import './Core/firebaseConfig';
 import './App.css';
 
 export default class App extends React.Component {
