@@ -2,21 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import ProductosConstant from '../../Common/constants/ProductosConstant';
 
-import { collection, getDocs } from 'firebase/firestore/lite';
-import { db } from '../../Core/firebaseConfig';
-
 class ProductoDetalle extends React.Component {
   producto;
   constructor({ props }) {
     super(props);
-  }
-
-  async getProducts(){
-    const citiesCol = collection(db, 'products');
-    const citySnapshot = await getDocs(citiesCol);
-    const cityList = citySnapshot.docs.map(doc => doc.data());
-    console.log('getProducts', cityList);
-    return cityList;
   }
 
   render() {
