@@ -7,6 +7,7 @@ import ProductoDetalle from './Home/ProductoDetalle/ProductoDetalle';
 import Header from './Common/components/Header/Header';
 import Body from './Common/components/Body/Body';
 import Footer from './Common/components/Footer/Footer';
+import { v4 as uuidv4 } from 'uuid';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -41,5 +42,9 @@ export default class App extends React.Component {
         </Router>
       </div>
     );
+  }
+
+  componentDidMount() {
+    // localStorage.setItem('userId', uuidv4());
   }
 }

@@ -101,7 +101,7 @@ export default class ReactiveForm extends React.Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form values', this.loginForm.value);
+    // console.log('Form values', this.loginForm.value);
   };
 
   render() {

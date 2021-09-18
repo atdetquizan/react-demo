@@ -10,8 +10,12 @@ import { doc, setDoc } from 'firebase/firestore/lite';
 import { db } from '../../../Core/firebaseConfig';
 
 const TextInput = ({ handler, touched, hasError, meta }) => (
-  <div className="form-group mb-1">
-    <input className="form-control" placeholder={`Enter ${meta.label}`} {...handler()} />
+  <div className='form-group mb-1'>
+    <input
+      className='form-control'
+      placeholder={`Enter ${meta.label}`}
+      {...handler()}
+    />
     <span>
       {touched && hasError('required') && `${meta.label} is required`}
     </span>
@@ -19,14 +23,15 @@ const TextInput = ({ handler, touched, hasError, meta }) => (
 );
 
 export default class FormProducto extends React.Component {
-  
   productoForm = FormBuilder.group({
     title: ['', Validators.required],
     precie: ['', Validators.required],
     descuento: ['', Validators.required],
     image: ['', Validators.required],
   });
-
+  constructor({props}) {
+    super(props);
+  }
   handleReset = () => {
     this.productoForm.reset();
   };
@@ -35,6 +40,7 @@ export default class FormProducto extends React.Component {
     e.preventDefault();
     await setDoc(doc(db, 'productos', uuidv4()), this.productoForm.value);
     this.productoForm.reset();
+    this.props.changeProducts();
   };
   render() {
     return (
@@ -62,11 +68,19 @@ export default class FormProducto extends React.Component {
               render={TextInput}
               meta={{ label: 'Imagen' }}
             />
-            <div className="row">
-              <button type='button' className="btn btn-default col-md-6" onClick={this.handleReset}>
+            <div className='row'>
+              <button
+                type='button'
+                className='btn btn-default col-md-6'
+                onClick={this.handleReset}
+              >
                 Reset
               </button>
-              <button type='submit' className="btn btn-primary col-md-6" disabled={invalid}>
+              <button
+                type='submit'
+                className='btn btn-primary col-md-6'
+                disabled={invalid}
+              >
                 Crear
               </button>
             </div>
