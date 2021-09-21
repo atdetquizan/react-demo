@@ -8,19 +8,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { doc, setDoc } from 'firebase/firestore/lite';
 import { db } from '../../../Core/firebaseConfig';
-
-const TextInput = ({ handler, touched, hasError, meta }) => (
-  <div className='form-group mb-1'>
-    <input
-      className='form-control'
-      placeholder={`Enter ${meta.label}`}
-      {...handler()}
-    />
-    <span>
-      {touched && hasError('required') && `${meta.label} is required`}
-    </span>
-  </div>
-);
+import { TextInput } from '../TextInput/TextInput';
 
 export default class FormProducto extends React.Component {
   productoForm = FormBuilder.group({
@@ -29,6 +17,7 @@ export default class FormProducto extends React.Component {
     descuento: ['', Validators.required],
     image: ['', Validators.required],
   });
+  
   constructor({props}) {
     super(props);
   }
