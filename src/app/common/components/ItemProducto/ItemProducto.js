@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { doc, deleteDoc } from 'firebase/firestore/lite';
 import './ItemProducto.css';
 
-import { query, collection, addDoc, setDoc } from 'firebase/firestore/lite';
+import { query, collection, getDocs, setDoc } from 'firebase/firestore/lite';
 import { db } from '../../../Core/firebaseConfig';
 import { v4 as uuidv4 } from 'uuid';
 
 import swal from 'sweetalert';
 
 export default class ItemProducto extends React.Component {
-  constructor(props) {
+  constructor({props}) {
     super(props);
     // console.log(props);
   }
@@ -36,11 +36,35 @@ export default class ItemProducto extends React.Component {
 
   async handleAddProduct() {
     const userId = localStorage.getItem('userId');
-    await setDoc(doc(db, `carrito-compra/${userId}/productos/${uuidv4()}`), {
-      id: this.props.id,
-      producto: this.props.producto,
-      cantidad: 1,
+    let product;
+    let id;
+
+    const carritoUser = query(collection(db, `carrito-compra/${userId}/productos`));
+    const querySnapshot = await getDocs(carritoUser);
+    
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data.id === this.props.id) {
+        id = doc.id;
+        product = data;
+        product.cantidad += 1;
+      }
+      
     });
+
+    if (!product) {
+      product = {
+        id: this.props.id,
+        producto: this.props.producto,
+        cantidad: 1,
+      }
+
+      await setDoc(doc(db, `carrito-compra/${userId}/productos/${uuidv4()}`), product);
+    } else {
+
+      await setDoc(doc(db, `carrito-compra/${userId}/productos/${id}`), product);
+    }
+
   }
 
   render() {
