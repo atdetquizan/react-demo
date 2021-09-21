@@ -16,10 +16,8 @@ export default class CarritoCompra extends React.Component {
 
     const q = query(collection(db, `carrito-compra/${userId}/productos`));
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot);
     
     querySnapshot.forEach((doc) => {
-      console.log('getCarritoCompra', doc.data());
       carritoCompra.push({ id: doc.id, data: doc.data() });
     });
     this.setState({ carritoCompra });

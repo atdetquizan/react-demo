@@ -45,6 +45,9 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // localStorage.setItem('userId', uuidv4());
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      localStorage.setItem('userId', uuidv4());
+    }
   }
 }
