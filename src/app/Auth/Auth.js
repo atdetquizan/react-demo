@@ -4,10 +4,8 @@ import FormAuth from '../Common/components/FormAuth/FormAuth';
 
 export default class Auth extends React.Component {
 
-constructor(props) {
+constructor({props}) {
     super(props);
-    console.log(props);
-    this.state = { ...this.props.state}
 }
 
   render() {
@@ -15,7 +13,7 @@ constructor(props) {
       <Container>
         <Row className="justify-content-center">
           <Col xs={4}>
-            <FormAuth submitLogin={(e) => this.props.authSutmit(e)}/>
+            <FormAuth />
           </Col>
         </Row>
       </Container>

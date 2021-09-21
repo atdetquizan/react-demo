@@ -7,6 +7,7 @@ import {
   FieldControl,
 } from 'react-reactive-form';
 import { TextInput } from '../TextInput/TextInput';
+import eventBus from "../../../Core/eventBus";
 export default class FormAuth extends React.Component {
   authForm = FormBuilder.group({
     username: ['', Validators.required],
@@ -19,7 +20,8 @@ export default class FormAuth extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    this.props.submitLogin(this.authForm.value);
+    eventBus.dispatch("log-in", this.authForm.value);
+    // this.props.submitLogin(this.authForm.value);
   };
 
   render() {

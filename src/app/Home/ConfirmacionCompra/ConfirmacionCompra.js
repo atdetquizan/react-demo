@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import eventBus from '../../Core/eventBus';
 
 export default class ConfirmacionCompra extends React.Component {
   // login() {
@@ -37,7 +37,11 @@ export default class ConfirmacionCompra extends React.Component {
   //       console.log(error);
   //     });
   // }
+  onClickLogout() {
+    eventBus.dispatch('log-out', {});
+  }
+
   render() {
-    return <div>Componente confirmacion-compra <button type="button" onClick={() => this.login()}>LOGIN</button></div>;
+    return <div>Componente confirmacion-compra <button type="button" onClick={() => this.onClickLogout()}>LOG-OUT</button></div>;
   }
 }

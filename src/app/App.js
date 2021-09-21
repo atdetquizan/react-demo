@@ -11,6 +11,7 @@ import Footer from './Common/components/Footer/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
+import eventBus from './Core/eventBus';
 
 import './Core/firebaseConfig';
 import './App.css';
@@ -39,7 +40,7 @@ export default class App extends React.Component {
                   <CarritoCompra />
                 </Route>
                 <Route path='/confirmacion-compra'>
-                  {this.state.token ? <ComfirmacionCompra /> : <Auth authSutmit={(e) => this.onAuthSutmit(e)}/>}
+                  {this.state.token ? <ComfirmacionCompra /> : <Auth />}
                 </Route>
                 <Route path={`/producto-detalle/:productoId`}>
                   <ProductoDetalle />
@@ -54,8 +55,7 @@ export default class App extends React.Component {
   }
 
   onAuthSutmit(values) {
-    console.log(values);
-    this.setState({ token: true })
+    this.setState({ token: true });
     const userId = localStorage.getItem('userId');
     if (!userId) {
       localStorage.setItem('userId', uuidv4());
@@ -63,11 +63,23 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    // const userId = localStorage.getItem('userId');
-    // if (!userId) {
-    //   localStorage.setItem('userId', uuidv4());
-    // } else {
-    this.setState({ token: localStorage.getItem('userId') });
-    // }
+    eventBus.on('log-in', (data) => {
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        localStorage.setItem('userId', uuidv4());
+      }
+      this.setState({ token: localStorage.getItem('userId') });
+    });
+
+    eventBus.on('log-out', (data) => {
+      localStorage.removeItem('userId');
+      this.setState({ token: null });
+    });
+
+  }
+
+  componentWillUnmount() {
+    eventBus.remove('log-in');
+    eventBus.remove('log-out');
   }
 }
