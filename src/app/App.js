@@ -66,7 +66,7 @@ export default class App extends React.Component {
     eventBus.on('log-in', (data) => {
       const userId = localStorage.getItem('userId');
       if (!userId) {
-        localStorage.setItem('userId', uuidv4());
+        localStorage.setItem('userId', data.uid);
       }
       this.setState({ token: localStorage.getItem('userId') });
     });

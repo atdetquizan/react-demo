@@ -7,10 +7,16 @@ import {
   FieldControl,
 } from 'react-reactive-form';
 import { TextInput } from '../TextInput/TextInput';
-import eventBus from "../../../Core/eventBus";
+import eventBus from '../../../Core/eventBus';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+
 export default class FormAuth extends React.Component {
   authForm = FormBuilder.group({
-    username: ['', Validators.required],
+    username: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
@@ -20,8 +26,25 @@ export default class FormAuth extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    eventBus.dispatch("log-in", this.authForm.value);
-    // this.props.submitLogin(this.authForm.value);
+    const values = this.authForm.value;
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, values.username, values.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+        eventBus.dispatch('log-in', user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(
+          'Clave o/y contraseña incorrectos',
+          errorCode,
+          errorMessage
+        );
+      });
   };
 
   render() {
@@ -38,7 +61,11 @@ export default class FormAuth extends React.Component {
             <FieldControl
               name='password'
               render={TextInput}
-              meta={{ title: 'Contraseña', label: 'Contraseña', type: 'password' }}
+              meta={{
+                title: 'Contraseña',
+                label: 'Contraseña',
+                type: 'password',
+              }}
             />
             <div className='row px-0 mx-0'>
               <button

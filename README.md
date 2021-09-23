@@ -1,5 +1,8 @@
-- Crud productos
-- Carrito compras
+- Crud productos *
+- Carrito compras *
+- Authenticacion *
+- Validar rutas *
+- Eventos por bus *
 - Confimracion de la compra
     - Tabla padre 
     - Detalle de la tabla padre
