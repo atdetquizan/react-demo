@@ -13,23 +13,10 @@ export default class Productos extends React.Component {
     this.getProducts();
   }
   async getProducts() {
-    // // , where("capital", "==", true)
-    // // const q = query(collection(db, 'productos'));
-    // const q = collection(db, 'productos');
-    // // const data = [];
-    // const querySnapshot = await getDocs(q);
-    // console.log(querySnapshot.);
-    // // querySnapshot.data().forEach((item) => {
-    // //   this.productos.push({ id: item.id, data: item.data });
-    // // });
-    // // this.setState({ products: querySnapshot.docs });
-    // // this.setState({ products: data });
     const q = query(collection(db, 'productos'));
     const productos = [];
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.id, ' => ', doc.data());
       productos.push({ id: doc.id, data: doc.data() });
     });
 

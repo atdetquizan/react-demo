@@ -76,6 +76,11 @@ export default class App extends React.Component {
       this.setState({ token: null });
     });
 
+
+    if (localStorage.getItem('userId')) {
+      this.setState({ token: localStorage.getItem('userId') });
+    }
+
   }
 
   componentWillUnmount() {

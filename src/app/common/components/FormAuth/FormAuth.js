@@ -10,8 +10,9 @@ import { TextInput } from '../TextInput/TextInput';
 import eventBus from '../../../Core/eventBus';
 import {
   getAuth,
-  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from 'firebase/auth';
 
 export default class FormAuth extends React.Component {
@@ -31,6 +32,7 @@ export default class FormAuth extends React.Component {
     signInWithEmailAndPassword(auth, values.username, values.password)
       .then((userCredential) => {
         // Signed in
+        console.log(userCredential);
         const user = userCredential.user;
         console.log(user);
         // ...
@@ -46,6 +48,34 @@ export default class FormAuth extends React.Component {
         );
       });
   };
+
+  onClickLoginGoogle() {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(credential);
+        const token = credential.accessToken;
+        console.log(token);
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+        eventBus.dispatch('log-in', user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(errorCode, errorMessage, email, credential);
+      });
+  }
 
   render() {
     return (
@@ -74,6 +104,13 @@ export default class FormAuth extends React.Component {
                 disabled={invalid}
               >
                 Authenticar
+              </button>
+              <button
+                type='button'
+                onClick={() => this.onClickLoginGoogle()}
+                className='btn btn-danger mt-2 col-md-12'
+              >
+                Google Login
               </button>
             </div>
           </form>
